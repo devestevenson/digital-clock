@@ -1,0 +1,173 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url(./assets/fonts/Oswald-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url(./assets/fonts/Oswald-Bold.ttf);
+    font-weight: 700;
+}
+:root {
+    --font-family: 'Oswald';
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    --color-green-plus: #00ff7f;
+    --color-letter: #FFFFFF;
+    --color-box: #1D1D1D;
+    --color-background: #1A1A1A;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+html {
+    font-size: 62.5%;
+}
+html::-webkit-scrollbar {
+    overflow: hidden;
+}
+body {
+    color: var(--color-letter);
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+}
+
+
+
+/* ESTILOS RELOJ DIGITAL */
+.clock-container {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-background);
+    padding: 0 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.date {
+    width: max-content;
+    margin: 0 auto 4rem auto;
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+}
+.time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-flow: row wrap;
+}
+.hours-ampm {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+}
+.ampm {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    position: absolute;
+    left: 10rem;
+    bottom: 10rem;
+}
+.hours {
+    color: var(--color-green-plus);
+}
+.hours-ampm,
+.minutes,
+.seconds {
+    width: 40rem;
+    height: 40rem;
+    background-color: var(--color-box);
+    border-radius: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s infinite ease-in-out;
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.hours,
+.minutes,
+.seconds {
+    font-size: 20rem;
+    font-weight: var(--font-weight-bold);
+}
+.creator {
+    display: block;
+    color: var(--color-letter);
+    width: max-content;
+    margin: 4rem auto 0 auto;
+    font-size: 1.6rem;
+    font-weight: var(--font-weight-regular);
+}
+.creator span {
+    color: var(--color-green-plus);
+}
+
+
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1364px) {
+    .seconds {
+        display: none;
+    }
+}
+@media (max-width: 924px) {
+    .clock-container {
+        padding: 3rem;
+    }
+    .time {
+        gap: 3rem;
+    }
+    .hours-ampm, .minutes, .seconds {
+        width: 37rem;
+        height: 37rem;
+    }
+}
+@media (max-width: 830px) {
+    .clock-container {
+        height: auto;
+    }
+}
+@media (max-width: 480px) {
+    .clock-container {
+        height: auto;
+        padding: 2rem;
+    }
+    .date {
+        font-size: 2.4rem;
+        margin: 0 auto 2rem auto;
+    }
+    .time {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .ampm {
+        bottom: 7.5rem;
+    }
+    .hours-ampm, .minutes, .seconds {
+        width: 35rem;
+        height: 35rem;
+    }
+    .seconds {
+        display: none;
+    }
+    .creator {
+        margin: 2rem auto 0 auto;
+    }
+}
